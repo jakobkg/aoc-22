@@ -1,4 +1,4 @@
-use std::fs;
+use std::{fs, process::exit};
 
 mod part1 {
     pub fn solve(input: &str) -> usize {
@@ -82,7 +82,16 @@ mod part2 {
 }
 
 fn main() {
-    let input = fs::read_to_string("input").expect("Unable to read input file");
+    let input = match fs::read_to_string("input") {
+        Ok(input) => input,
+        Err(_) => match fs::read_to_string("day01/input") {
+            Ok(input) => input,
+            Err(_) => {
+                println!("Could not find input file");
+                exit(1);
+            }
+        },
+    };
 
     println!("Part 1: {} calories", part1::solve(&input));
     println!("Part 2: {} calories", part2::solve(&input));
