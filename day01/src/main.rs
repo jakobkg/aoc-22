@@ -12,31 +12,6 @@ mod part1 {
             .max()
             .unwrap()
     }
-
-    #[cfg(test)]
-    mod tests {
-        use super::*;
-
-        #[test]
-        fn validate() {
-            let input = "1000
-2000
-3000
-
-4000
-
-5000
-6000
-
-7000
-8000
-9000
-
-10000";
-
-            assert_eq!(solve(input), 24000);
-        }
-    }
 }
 
 mod part2 {
@@ -54,30 +29,21 @@ mod part2 {
 
         calories[0..3].iter().sum()
     }
+}
 
-    #[cfg(test)]
-    mod tests {
-        use super::*;
+#[cfg(test)]
+mod tests {
+    use crate::{part1, part2};
+    const TEST_INPUT: &str = "1000\n2000\n3000\n\n4000\n\n5000\n6000\n\n7000\n8000\n9000\n\n10000";
 
-        #[test]
-        fn validate() {
-            let input = "1000
-2000
-3000
+    #[test]
+    fn validate_part1() {
+        assert_eq!(part1::solve(TEST_INPUT), 24000);
+    }
 
-4000
-
-5000
-6000
-
-7000
-8000
-9000
-
-10000";
-
-            assert_eq!(solve(input), 45000);
-        }
+    #[test]
+    fn validate_part2() {
+        assert_eq!(part2::solve(TEST_INPUT), 45000);
     }
 }
 
