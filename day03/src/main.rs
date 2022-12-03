@@ -90,7 +90,7 @@ CrZsJsPPZsGzwwsLwLmpwMDw";
 fn main() {
     let input = match fs::read_to_string("input") {
         Ok(input) => input,
-        Err(_) => match fs::read_to_string("day02/input") {
+        Err(_) => match fs::read_to_string("day03/input") {
             Ok(input) => input,
             Err(_) => {
                 println!("Could not find input file");
