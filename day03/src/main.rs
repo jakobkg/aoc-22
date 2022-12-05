@@ -39,18 +39,22 @@ mod part2 {
 
         loop {
             let first = match lines.next() {
-                Some(line) => {line.to_string()},
-                None => {break},
+                Some(line) => line.to_string(),
+                None => break,
             };
 
             let second = match lines.next() {
-                Some(line) => {line.to_string()},
-                None => {break;},
+                Some(line) => line.to_string(),
+                None => {
+                    break;
+                }
             };
 
             let third = match lines.next() {
-                Some(line) => {line.to_string()},
-                None => {break;},
+                Some(line) => line.to_string(),
+                None => {
+                    break;
+                }
             };
 
             for letter in first.chars() {
