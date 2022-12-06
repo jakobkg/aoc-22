@@ -1,42 +1,34 @@
-use std::{fs, process::exit};
+use std::{fs, process::exit, collections::HashSet};
+
+fn incredible_solution(input: &str, window_width: usize) -> usize {
+    input
+        .chars()
+        .enumerate()
+        .collect::<Vec<(usize, char)>>()
+        .windows(window_width)
+        .fold(0, |accumulator, window| {
+            let mut set = HashSet::new();
+            if accumulator == 0 && window.iter().all(|&(_, character)| set.insert(character)) {
+                window.last().unwrap().0 + 1
+            } else {
+                accumulator
+            }
+        })
+}
 
 mod part1 {
-    use std::collections::HashSet;
+    use crate::incredible_solution;
 
     pub fn solve(input: &str) -> usize {
-        input
-            .chars()
-            .enumerate()
-            .collect::<Vec<(usize, char)>>()
-            .windows(4)
-            .fold(0, |accumulator, window| {
-                let mut set = HashSet::new();
-                if accumulator == 0 && window.iter().all(|&(_, character)| set.insert(character)) {
-                    window.last().unwrap().0 + 1
-                } else {
-                    accumulator
-                }
-            })
+        incredible_solution(input, 4)
     }
 }
 
 mod part2 {
-    use std::collections::HashSet;
+    use crate::incredible_solution;
 
     pub fn solve(input: &str) -> usize {
-        input
-            .chars()
-            .enumerate()
-            .collect::<Vec<(usize, char)>>()
-            .windows(14)
-            .fold(0, |accumulator, window| {
-                let mut set = HashSet::new();
-                if accumulator == 0 && window.iter().all(|&(_, character)| set.insert(character)) {
-                    window.last().unwrap().0 + 1
-                } else {
-                    accumulator
-                }
-            })
+        incredible_solution(input, 14)
     }
 }
 
