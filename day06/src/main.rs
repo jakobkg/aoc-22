@@ -9,12 +9,12 @@ mod part1 {
             .enumerate()
             .collect::<Vec<(usize, char)>>()
             .windows(4)
-            .fold(0, |a, w| {
+            .fold(0, |accumulator, window| {
                 let mut set = HashSet::new();
-                if a == 0 && w.iter().all(move |p| set.insert(p.1)) {
-                    w[3].0 + 1
+                if accumulator == 0 && window.iter().all(|&(_, character)| set.insert(character)) {
+                    window.last().unwrap().0 + 1
                 } else {
-                    a
+                    accumulator
                 }
             })
     }
@@ -29,12 +29,12 @@ mod part2 {
             .enumerate()
             .collect::<Vec<(usize, char)>>()
             .windows(14)
-            .fold(0, |a, w| {
+            .fold(0, |accumulator, window| {
                 let mut set = HashSet::new();
-                if a == 0 && w.iter().all(move |p| set.insert(p.1)) {
-                    w[13].0 + 1
+                if accumulator == 0 && window.iter().all(|&(_, character)| set.insert(character)) {
+                    window.last().unwrap().0 + 1
                 } else {
-                    a
+                    accumulator
                 }
             })
     }
@@ -85,7 +85,7 @@ fn main() {
         part1::solve(&input)
     );
     println!(
-        "Part 2: {} characters before first message",
+        "Part 2: {} characters before the first message",
         part2::solve(&input)
     );
 }
