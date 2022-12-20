@@ -1,7 +1,7 @@
 use std::{
     collections::{HashMap, HashSet, VecDeque},
     fs,
-    process::exit,
+    process::exit, time::Instant,
 };
 
 #[derive(Clone, Copy, Debug, Eq, Hash, PartialEq)]

@@ -31,6 +31,8 @@ mod part1 {
     pub fn solve(input: &str) -> String {
         let mut state = parse_initial_state(input);
 
+        println!("Done parsing the crates, time to start moving them!");
+
         input
             .lines()
             .filter(|line| line.starts_with("move"))
